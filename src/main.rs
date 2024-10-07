@@ -6,19 +6,19 @@ struct Ticket {
 }
 
 struct Configuration {
-    version: u32,
+    version: f32,
     active: bool
 }
 
-/// instantiating a struct
-let ticket = Ticket {
-    name: "Payment Processor".into(),
-    description: "Building a payment processor with rust".into(),
-    status: "Open".into()
-}
+// instantiating a struct
+// let ticket = Ticket {
+//     name: "Payment Processor".into(),
+//     description: "Building a payment processor with rust".into(),
+//     status: "Open".into()
+// }
 
-/// Access field on a struct using the DOT Notation
-let name = ticket.name;
+// Access field on a struct using the DOT Notation
+// let name = ticket.name;
 
 
 // method on struct that describe the struct behvaior 
@@ -47,13 +47,22 @@ impl Ticket {
             status
         }
     }
+    fn ticket_title(self) -> String {
+        self.title
+    }
+    fn ticket_description(self) -> String {
+        self.description
+    }
+    fn ticket_status(self) -> String {
+        self.status
+    }
     fn is_open(self) -> bool {
         self.status == "Open"
     }
 }
 
 
-/// two key differences  of method from normal function
+// two key differences  of method from normal function
 // method must be define with the impl block
 // method may use self as the first params referring to the instance of the struct, the method is call upon.
 
@@ -70,10 +79,13 @@ impl Configuration {
     }
 }
 
-/// The only way to call a static method is by using the function call syntax:
-let default_string = Configuration::default();
+// The only way to call a static method is by using the function call syntax:
+// const default_string: Configuration = Configuration::default();
 
 
 fn main() {
     println!("Hello, world!");
 }
+
+// Encapsulation is the practice of hiding the internal representation of an object. 
+// Accessor methods are public methods that allow you to read the value of a private field (or fields) of a struct.
