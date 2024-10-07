@@ -23,6 +23,30 @@ let name = ticket.name;
 
 // method on struct that describe the struct behvaior 
 impl Ticket {
+    fn new(title: String, description: String, status: String) -> Ticket {
+        if title.is_empty() {
+            panic!("Title cannot be empty");
+        }
+        if title.len() > 50 {
+            panic!("Title cannot be longer than 50 byte");
+        }
+        if description.is_empty() {
+            panic!("Description cannot be empty");
+        }
+        if description.len() > 500 {
+            panic!("Description cannot be longer than 500 bytes");
+        }
+
+        if status != "TO-DO" && status != "IN_PROGRESS" && status != "Done" {
+            panic!("Only `To-Do`, `In Progress`, and `Done` statuses are allowed");
+        }
+
+        Ticket {
+            title,
+            description,
+            status
+        }
+    }
     fn is_open(self) -> bool {
         self.status == "Open"
     }
